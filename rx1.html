@@ -1,0 +1,36 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+</head>
+<body>
+        <button>Click me</button>
+    <script src="https://unpkg.com/@reactivex/rxjs@5.3.0/dist/global/Rx.js"></script>
+     <script>
+       var button=document.querySelector('button');
+        var observer={
+                 next:function(value){
+                     console.log(value);
+                 },
+                 error :  function(error)
+                 {
+                     console.log(error);
+                 },
+                 complete:function()
+                 {
+                     console.log('Completed');
+                 }
+        };
+       //button.addEventListener('click',(event)=>{console.log(event)});
+       Rx.Observable.fromEvent(button,'click')     //it is default one 
+                 .subscribe(
+                       (event)=>console.log(event.clientX)
+                     );
+     
+     
+     </script>
+      
+
+
+ </body>
+ </html>   
